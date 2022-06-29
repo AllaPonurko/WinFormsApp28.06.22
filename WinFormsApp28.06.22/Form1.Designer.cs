@@ -42,6 +42,13 @@ namespace WinFormsApp28._06._22
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRadius = new System.Windows.Forms.TextBox();
+            this.labelRadius = new System.Windows.Forms.Label();
+            this.labelWidth = new System.Windows.Forms.Label();
+            this.labelLength = new System.Windows.Forms.Label();
+            this.txtWidth = new System.Windows.Forms.TextBox();
+            this.txtLength = new System.Windows.Forms.TextBox();
+            this.labelParams = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.radioButtonLine = new System.Windows.Forms.RadioButton();
             this.radioButtonEllipse = new System.Windows.Forms.RadioButton();
@@ -49,13 +56,7 @@ namespace WinFormsApp28._06._22
             this.radioButtonCircle = new System.Windows.Forms.RadioButton();
             this.labeSelect = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelParams = new System.Windows.Forms.Label();
-            this.txtLength = new System.Windows.Forms.TextBox();
-            this.txtWidth = new System.Windows.Forms.TextBox();
-            this.labelLength = new System.Windows.Forms.Label();
-            this.labelWidth = new System.Windows.Forms.Label();
-            this.labelRadius = new System.Windows.Forms.Label();
-            this.txtRadius = new System.Windows.Forms.TextBox();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -163,6 +164,7 @@ namespace WinFormsApp28._06._22
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSelect);
             this.panel1.Controls.Add(this.txtRadius);
             this.panel1.Controls.Add(this.labelRadius);
             this.panel1.Controls.Add(this.labelWidth);
@@ -181,9 +183,72 @@ namespace WinFormsApp28._06._22
             this.panel1.Size = new System.Drawing.Size(200, 368);
             this.panel1.TabIndex = 1;
             // 
+            // txtRadius
+            // 
+            this.txtRadius.Enabled = false;
+            this.txtRadius.Location = new System.Drawing.Point(97, 250);
+            this.txtRadius.Name = "txtRadius";
+            this.txtRadius.Size = new System.Drawing.Size(100, 23);
+            this.txtRadius.TabIndex = 12;
+            this.txtRadius.TextChanged += new System.EventHandler(this.txtRadius_TextChanged);
+            // 
+            // labelRadius
+            // 
+            this.labelRadius.AutoSize = true;
+            this.labelRadius.Location = new System.Drawing.Point(4, 253);
+            this.labelRadius.Name = "labelRadius";
+            this.labelRadius.Size = new System.Drawing.Size(45, 15);
+            this.labelRadius.TabIndex = 11;
+            this.labelRadius.Text = "Радиус";
+            // 
+            // labelWidth
+            // 
+            this.labelWidth.AutoSize = true;
+            this.labelWidth.Location = new System.Drawing.Point(4, 215);
+            this.labelWidth.Name = "labelWidth";
+            this.labelWidth.Size = new System.Drawing.Size(52, 15);
+            this.labelWidth.TabIndex = 10;
+            this.labelWidth.Text = "Ширина";
+            // 
+            // labelLength
+            // 
+            this.labelLength.AutoSize = true;
+            this.labelLength.Location = new System.Drawing.Point(4, 176);
+            this.labelLength.Name = "labelLength";
+            this.labelLength.Size = new System.Drawing.Size(42, 15);
+            this.labelLength.TabIndex = 9;
+            this.labelLength.Text = "Длина";
+            // 
+            // txtWidth
+            // 
+            this.txtWidth.Enabled = false;
+            this.txtWidth.Location = new System.Drawing.Point(97, 215);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Size = new System.Drawing.Size(100, 23);
+            this.txtWidth.TabIndex = 8;
+            this.txtWidth.TextChanged += new System.EventHandler(this.txtWidth_TextChanged);
+            // 
+            // txtLength
+            // 
+            this.txtLength.Enabled = false;
+            this.txtLength.Location = new System.Drawing.Point(97, 176);
+            this.txtLength.Name = "txtLength";
+            this.txtLength.Size = new System.Drawing.Size(100, 23);
+            this.txtLength.TabIndex = 7;
+            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
+            // 
+            // labelParams
+            // 
+            this.labelParams.AutoSize = true;
+            this.labelParams.Location = new System.Drawing.Point(4, 149);
+            this.labelParams.Name = "labelParams";
+            this.labelParams.Size = new System.Drawing.Size(115, 15);
+            this.labelParams.TabIndex = 6;
+            this.labelParams.Text = "Задайте параметры";
+            // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(0, 320);
+            this.btnConfirm.Location = new System.Drawing.Point(93, 321);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(104, 23);
             this.btnConfirm.TabIndex = 5;
@@ -253,68 +318,15 @@ namespace WinFormsApp28._06._22
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // labelParams
+            // btnSelect
             // 
-            this.labelParams.AutoSize = true;
-            this.labelParams.Location = new System.Drawing.Point(4, 146);
-            this.labelParams.Name = "labelParams";
-            this.labelParams.Size = new System.Drawing.Size(115, 15);
-            this.labelParams.TabIndex = 6;
-            this.labelParams.Text = "Задайте параметры";
-            // 
-            // txtLength
-            // 
-            this.txtLength.Enabled = false;
-            this.txtLength.Location = new System.Drawing.Point(97, 176);
-            this.txtLength.Name = "txtLength";
-            this.txtLength.Size = new System.Drawing.Size(100, 23);
-            this.txtLength.TabIndex = 7;
-            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
-            // 
-            // txtWidth
-            // 
-            this.txtWidth.Enabled = false;
-            this.txtWidth.Location = new System.Drawing.Point(97, 215);
-            this.txtWidth.Name = "txtWidth";
-            this.txtWidth.Size = new System.Drawing.Size(100, 23);
-            this.txtWidth.TabIndex = 8;
-            this.txtWidth.TextChanged += new System.EventHandler(this.txtWidth_TextChanged);
-            // 
-            // labelLength
-            // 
-            this.labelLength.AutoSize = true;
-            this.labelLength.Location = new System.Drawing.Point(4, 176);
-            this.labelLength.Name = "labelLength";
-            this.labelLength.Size = new System.Drawing.Size(42, 15);
-            this.labelLength.TabIndex = 9;
-            this.labelLength.Text = "Длина";
-            // 
-            // labelWidth
-            // 
-            this.labelWidth.AutoSize = true;
-            this.labelWidth.Location = new System.Drawing.Point(4, 215);
-            this.labelWidth.Name = "labelWidth";
-            this.labelWidth.Size = new System.Drawing.Size(52, 15);
-            this.labelWidth.TabIndex = 10;
-            this.labelWidth.Text = "Ширина";
-            // 
-            // labelRadius
-            // 
-            this.labelRadius.AutoSize = true;
-            this.labelRadius.Location = new System.Drawing.Point(4, 253);
-            this.labelRadius.Name = "labelRadius";
-            this.labelRadius.Size = new System.Drawing.Size(45, 15);
-            this.labelRadius.TabIndex = 11;
-            this.labelRadius.Text = "Радиус";
-            // 
-            // txtRadius
-            // 
-            this.txtRadius.Enabled = false;
-            this.txtRadius.Location = new System.Drawing.Point(97, 250);
-            this.txtRadius.Name = "txtRadius";
-            this.txtRadius.Size = new System.Drawing.Size(100, 23);
-            this.txtRadius.TabIndex = 12;
-            this.txtRadius.TextChanged += new System.EventHandler(this.txtRadius_TextChanged);
+            this.btnSelect.Location = new System.Drawing.Point(97, 109);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(100, 23);
+            this.btnSelect.TabIndex = 13;
+            this.btnSelect.Text = "Выбрать";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // Form1
             // 
@@ -364,6 +376,7 @@ namespace WinFormsApp28._06._22
         private System.Windows.Forms.Label labelParams;
         private System.Windows.Forms.TextBox txtRadius;
         private System.Windows.Forms.Label labelRadius;
+        private System.Windows.Forms.Button btnSelect;
     }
 }
 

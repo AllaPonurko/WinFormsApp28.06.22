@@ -19,13 +19,7 @@ namespace WinFormsApp28._06._22
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (radioButtonCircle.Checked)
-                txtRadius.Enabled = true;
-            if (radioButtonEllipse.Checked|| radioButtonRectangle.Checked)
-            {
-                txtLength.Enabled = true;
-                txtWidth.Enabled = true;
-            }
+            
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -77,6 +71,22 @@ namespace WinFormsApp28._06._22
         private void txtRadius_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            if (radioButtonCircle.Checked)
+            { 
+                txtRadius.Enabled = true;
+                txtLength.Enabled = false;
+                txtWidth.Enabled = false;
+            }
+            if (radioButtonEllipse.Checked || radioButtonRectangle.Checked)
+            {
+                txtLength.Enabled = true;
+                txtWidth.Enabled = true;
+                txtRadius.Enabled = false;
+            }
         }
     }
     }
