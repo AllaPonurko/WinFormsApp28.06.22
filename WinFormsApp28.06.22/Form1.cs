@@ -22,53 +22,85 @@ namespace WinFormsApp28._06._22
             
         }
         Point Start = new Point();
-        Point start = new Point();
         Point finish = new Point();
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            panel2.MouseClick += OnPanel2Clicked;
-            void OnPanel2Clicked(object sender, MouseEventArgs args)
-            {
-                var location = args.Location;
-                Start.X = location.X;
-                Start.Y = location.Y;
-            }
             
         }
-
+        /// <summary>
+        /// определяем стартовую позицию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Panel2_MouseClick(object sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            var location = e.Location;
+            Start.X = location.X;
+            Start.Y = location.Y;
+            //throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// делаем выбор фигуры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Pen pen = new Pen(Color.Red, 3);
-              if(radioButtonCircle.Checked)
-            { 
-                
-                Rectangle rectangle = new Rectangle(Start.X,Start.Y,
-                    Convert.ToInt32(txtRadius.Text)*2,Convert.ToInt32(txtRadius.Text)*2);
-                panel2.CreateGraphics().DrawEllipse(pen, rectangle);
-            }
-              if(radioButtonEllipse.Checked)
+              if(radioButtonCircle.Checked&&txtRadius.Text!=null)
             {
+                try {Rectangle rectangle = new Rectangle(Start.X,Start.Y,
+                    Convert.ToInt32(txtRadius.Text)*2,Convert.ToInt32(txtRadius.Text)*2);
+                panel2.CreateGraphics().DrawEllipse(pen, rectangle); }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+              if(radioButtonEllipse.Checked&& txtLength.Text!=null&& txtWidth.Text!=null)
+            {
+                try
+                { 
                 Rectangle rectangle = new Rectangle(Start.X, Start.Y, Convert.ToInt32(txtLength.Text) ,
                     Convert.ToInt32(txtWidth.Text));
                 panel2.CreateGraphics().DrawEllipse(pen, rectangle);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-              if(radioButtonRectangle.Checked)
+              if(radioButtonRectangle.Checked && txtLength.Text != null && txtWidth.Text != null)
             {
-                Rectangle rectangle = new Rectangle(Start.X, Start.Y, Convert.ToInt32(txtLength.Text),
-                    Convert.ToInt32(txtWidth.Text));
-                panel2.CreateGraphics().DrawRectangle(pen, rectangle);
+                try
+                {
+                  Rectangle rectangle = new Rectangle(Start.X, Start.Y, Convert.ToInt32(txtLength.Text),
+                        Convert.ToInt32(txtWidth.Text));
+                        panel2.CreateGraphics().DrawRectangle(pen, rectangle);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-             if(radioButtonLine.Checked)
+             if(radioButtonLine.Checked && txtCoordinateX.Text != null && txtCoordinateY.Text != null)
             {
-                
-                Point p2 = new Point(63,98);
-                panel2.CreateGraphics().DrawLine(pen,Start,p2);
+                try
+                {
+                    finish.X = Convert.ToInt32(txtCoordinateX.Text);
+                    finish.Y = Convert.ToInt32(txtCoordinateY.Text);
+                    panel2.CreateGraphics().DrawLine(pen, Start, finish);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+            //else
+            //{
+            //    MessageBox.Show("Задайте параметры!");
+            //}
         }
 
         private void txtLength_TextChanged(object sender, EventArgs e)
@@ -84,7 +116,11 @@ namespace WinFormsApp28._06._22
         {
             
         }
-
+        /// <summary>
+        /// контроль доступности текстбокса в зависимости от выбранной фигуры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (radioButtonCircle.Checked)
@@ -112,12 +148,20 @@ namespace WinFormsApp28._06._22
                 txtCoordinateY.Enabled = true;
             }
         }
-
+        /// <summary>
+        /// очищение панели
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             panel2.CreateGraphics().Clear(Color.White);
         }
-
+        /// <summary>
+        /// выход из приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
