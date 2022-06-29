@@ -21,41 +21,53 @@ namespace WinFormsApp28._06._22
         {
             
         }
-
+        Point Start = new Point();
+        Point start = new Point();
+        Point finish = new Point();
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            SolidBrush redBrush = new SolidBrush(Color.Red);
+            panel2.MouseClick += OnPanel2Clicked;
+            void OnPanel2Clicked(object sender, MouseEventArgs args)
+            {
+                var location = args.Location;
+                Start.X = location.X;
+                Start.Y = location.Y;
+            }
+            
+        }
+
+        private void Panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            Pen pen = new Pen(Color.Red, 3);
               if(radioButtonCircle.Checked)
             { 
-                Pen pen = new Pen(Color.Red, 3);
-                Rectangle rectangle = new Rectangle();
+                
+                Rectangle rectangle = new Rectangle(Start.X,Start.Y,
+                    Convert.ToInt32(txtRadius.Text)*2,Convert.ToInt32(txtRadius.Text)*2);
                 panel2.CreateGraphics().DrawEllipse(pen, rectangle);
             }
               if(radioButtonEllipse.Checked)
             {
-                
-                Pen pen = new Pen(Color.Red, 3);
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new Rectangle(Start.X, Start.Y, Convert.ToInt32(txtLength.Text) ,
+                    Convert.ToInt32(txtWidth.Text));
                 panel2.CreateGraphics().DrawEllipse(pen, rectangle);
             }
               if(radioButtonRectangle.Checked)
             {
-                
-                Pen pen = new Pen(Color.Red, 3);
-                Rectangle rectangle = new Rectangle();
+                Rectangle rectangle = new Rectangle(Start.X, Start.Y, Convert.ToInt32(txtLength.Text),
+                    Convert.ToInt32(txtWidth.Text));
                 panel2.CreateGraphics().DrawRectangle(pen, rectangle);
             }
              if(radioButtonLine.Checked)
             {
-                Pen pen = new Pen(Color.Red, 3);
-                Point p1 = new Point(1,69);
-                Point p2 = new Point(26,98);
-                panel2.CreateGraphics().DrawLine(pen,p1,p2);
+                
+                Point p2 = new Point(63,98);
+                panel2.CreateGraphics().DrawLine(pen,Start,p2);
             }
         }
 
@@ -80,13 +92,35 @@ namespace WinFormsApp28._06._22
                 txtRadius.Enabled = true;
                 txtLength.Enabled = false;
                 txtWidth.Enabled = false;
+                txtCoordinateX.Enabled = false;
+                txtCoordinateY.Enabled = false;
             }
             if (radioButtonEllipse.Checked || radioButtonRectangle.Checked)
             {
                 txtLength.Enabled = true;
                 txtWidth.Enabled = true;
                 txtRadius.Enabled = false;
+                txtCoordinateX.Enabled = false;
+                txtCoordinateY.Enabled = false;
             }
+            if(radioButtonLine.Checked)
+            {
+                txtLength.Enabled = false;
+                txtWidth.Enabled = false;
+                txtRadius.Enabled = false;
+                txtCoordinateX.Enabled = true;
+                txtCoordinateY.Enabled = true;
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            panel2.CreateGraphics().Clear(Color.White);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
     }

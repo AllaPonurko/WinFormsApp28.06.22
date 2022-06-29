@@ -42,6 +42,8 @@ namespace WinFormsApp28._06._22
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
             this.txtRadius = new System.Windows.Forms.TextBox();
             this.labelRadius = new System.Windows.Forms.Label();
             this.labelWidth = new System.Windows.Forms.Label();
@@ -56,7 +58,13 @@ namespace WinFormsApp28._06._22
             this.radioButtonCircle = new System.Windows.Forms.RadioButton();
             this.labeSelect = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCoordinateX = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCoordinateY = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -164,6 +172,13 @@ namespace WinFormsApp28._06._22
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtCoordinateY);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtCoordinateX);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnSelect);
             this.panel1.Controls.Add(this.txtRadius);
             this.panel1.Controls.Add(this.labelRadius);
@@ -180,8 +195,28 @@ namespace WinFormsApp28._06._22
             this.panel1.Controls.Add(this.labeSelect);
             this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 368);
+            this.panel1.Size = new System.Drawing.Size(200, 409);
             this.panel1.TabIndex = 1;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(97, 383);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(100, 23);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "Очистить панель";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.Location = new System.Drawing.Point(97, 109);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(100, 23);
+            this.btnSelect.TabIndex = 13;
+            this.btnSelect.Text = "Выбрать";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // txtRadius
             // 
@@ -248,7 +283,7 @@ namespace WinFormsApp28._06._22
             // 
             // btnConfirm
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(93, 321);
+            this.btnConfirm.Location = new System.Drawing.Point(97, 354);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(104, 23);
             this.btnConfirm.TabIndex = 5;
@@ -318,21 +353,74 @@ namespace WinFormsApp28._06._22
             this.panel2.TabIndex = 2;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // btnSelect
+            // btnExit
             // 
-            this.btnSelect.Location = new System.Drawing.Point(97, 109);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(100, 23);
-            this.btnSelect.TabIndex = 13;
-            this.btnSelect.Text = "Выбрать";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            this.btnExit.Location = new System.Drawing.Point(713, 415);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "Выход";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 285);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 15);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Координаты";
+            // 
+            // txtCoordinateX
+            // 
+            this.txtCoordinateX.Enabled = false;
+            this.txtCoordinateX.Location = new System.Drawing.Point(97, 296);
+            this.txtCoordinateX.Name = "txtCoordinateX";
+            this.txtCoordinateX.Size = new System.Drawing.Size(100, 23);
+            this.txtCoordinateX.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 300);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 15);
+            this.label2.TabIndex = 17;
+            this.label2.Text = " точек";
+            // 
+            // txtCoordinateY
+            // 
+            this.txtCoordinateY.Enabled = false;
+            this.txtCoordinateY.Location = new System.Drawing.Point(97, 325);
+            this.txtCoordinateY.Name = "txtCoordinateY";
+            this.txtCoordinateY.Size = new System.Drawing.Size(100, 23);
+            this.txtCoordinateY.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 299);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(22, 15);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "X=";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 325);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 15);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Y=";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
@@ -377,6 +465,14 @@ namespace WinFormsApp28._06._22
         private System.Windows.Forms.TextBox txtRadius;
         private System.Windows.Forms.Label labelRadius;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCoordinateY;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCoordinateX;
+        private System.Windows.Forms.Label label1;
     }
 }
 
